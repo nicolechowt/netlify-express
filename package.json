@@ -12,7 +12,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
     "netlify-lambda": "^2.0.1",
-    "serverless-http": "^2.6.0"
+    "serverless-http": "^2.6.0",
+    "web-push": "^3.4.4"
   }
 }
