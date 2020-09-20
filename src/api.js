@@ -7,6 +7,11 @@ const webpush = require('web-push');
 const app = express();
 const router = express.Router();
 
+app.use(bodyParser.json())
+app.use(cors())
+app.options('*', cors()) // include before other routes
+app.use('/.netlify/functions/api', router);
+
 router.get('/', (req,res) => {
   res.json({
     'hello' : 'hi',
@@ -50,10 +55,6 @@ router.get('/send-notification', (req, res) => {
   res.json({ message: 'message sent' })
 })
 
-app.use(bodyParser.json())
-app.use(cors())
-
-app.use('/.netlify/functions/api', router);
 
 // in order for lambda to run, we need to export a handler function
 module.exports.handler = serverless(app);
